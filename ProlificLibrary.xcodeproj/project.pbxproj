@@ -17,6 +17,8 @@
 		E5175C481A1AC66C00B72C9C /* ProlificLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C471A1AC66C00B72C9C /* ProlificLibraryTests.m */; };
 		E5175C561A1ACE9900B72C9C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C551A1ACE9900B72C9C /* DetailViewController.m */; };
 		E5175C591A1ACF4E00B72C9C /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C581A1ACF4E00B72C9C /* AddViewController.m */; };
+		E5175C5D1A1AF1BA00B72C9C /* WebServiceCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C5C1A1AF1BA00B72C9C /* WebServiceCalls.m */; };
+		E5175C621A1AF75600B72C9C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C611A1AF75600B72C9C /* Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,11 @@
 		E5175C551A1ACE9900B72C9C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../DetailViewController.m; sourceTree = "<group>"; };
 		E5175C571A1ACF4E00B72C9C /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		E5175C581A1ACF4E00B72C9C /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		E5175C5A1A1AEFD000B72C9C /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		E5175C5B1A1AF1BA00B72C9C /* WebServiceCalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceCalls.h; sourceTree = "<group>"; };
+		E5175C5C1A1AF1BA00B72C9C /* WebServiceCalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceCalls.m; sourceTree = "<group>"; };
+		E5175C601A1AF75600B72C9C /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		E5175C611A1AF75600B72C9C /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +104,8 @@
 				E5175C551A1ACE9900B72C9C /* DetailViewController.m */,
 				E5175C571A1ACF4E00B72C9C /* AddViewController.h */,
 				E5175C581A1ACF4E00B72C9C /* AddViewController.m */,
+				E5175C5F1A1AF1DA00B72C9C /* Command */,
+				E5175C5E1A1AF1C600B72C9C /* Util */,
 				E5175C351A1AC66C00B72C9C /* Main.storyboard */,
 				E5175C381A1AC66C00B72C9C /* Images.xcassets */,
 				E5175C3A1A1AC66C00B72C9C /* LaunchScreen.xib */,
@@ -130,6 +139,25 @@
 				E5175C461A1AC66C00B72C9C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E5175C5E1A1AF1C600B72C9C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E5175C5A1A1AEFD000B72C9C /* Constant.h */,
+				E5175C601A1AF75600B72C9C /* Utils.h */,
+				E5175C611A1AF75600B72C9C /* Utils.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		E5175C5F1A1AF1DA00B72C9C /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				E5175C5B1A1AF1BA00B72C9C /* WebServiceCalls.h */,
+				E5175C5C1A1AF1BA00B72C9C /* WebServiceCalls.m */,
+			);
+			name = Command;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +260,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5175C5D1A1AF1BA00B72C9C /* WebServiceCalls.m in Sources */,
 				E5175C561A1ACE9900B72C9C /* DetailViewController.m in Sources */,
 				E5175C2E1A1AC66C00B72C9C /* AppDelegate.m in Sources */,
+				E5175C621A1AF75600B72C9C /* Utils.m in Sources */,
 				E5175C591A1ACF4E00B72C9C /* AddViewController.m in Sources */,
 				E5175C311A1AC66C00B72C9C /* ProlificLibrary.xcdatamodeld in Sources */,
 				E5175C341A1AC66C00B72C9C /* ViewController.m in Sources */,

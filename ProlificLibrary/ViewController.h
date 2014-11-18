@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebServiceCalls.h"
+#import "Utils.h"
+#import "Constant.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,WebServiceCallDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
+@property (strong, nonatomic) NSArray *booksArr;
 
 @end
 
