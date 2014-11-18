@@ -52,22 +52,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="4J0-bO-yms" secondAttribute="trailing" constant="-16" id="cxE-1F-rs0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Books" id="oE4-Vn-rU0">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ysM-Hq-q0L">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="gl3-fC-kFd">
-                                <rect key="frame" x="16" y="7" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="4t3-GR-pw9" kind="show" identifier="AddSegue" id="MIR-i8-iSy"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Books" id="oE4-Vn-rU0"/>
                     <connections>
-                        <outlet property="addButton" destination="gl3-fC-kFd" id="dp3-HD-9ES"/>
                         <outlet property="tableView" destination="4J0-bO-yms" id="jec-RH-fHY"/>
                         <segue destination="hn4-mq-gyU" kind="show" identifier="DetailSegue" id="prx-wk-Qls"/>
                     </connections>
@@ -115,6 +101,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="4t3-GR-pw9" eventType="touchUpInside" id="B57-zA-TMD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,6 +131,12 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="authorText" destination="9Vg-Yh-JsP" id="Jgn-bM-fVY"/>
+                        <outlet property="publisherText" destination="ZIh-bb-U6l" id="I4H-Cn-ZqU"/>
+                        <outlet property="tagsText" destination="jWT-rw-OkL" id="Mx5-UM-P70"/>
+                        <outlet property="titleText" destination="QgU-D4-7sc" id="T3E-04-AYm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VeY-Vq-GJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,7 +191,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tags:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb2-6h-4jY">
-                                <rect key="frame" x="128" y="257" width="80" height="21"/>
+                                <rect key="frame" x="128" y="257" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

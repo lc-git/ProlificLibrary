@@ -15,15 +15,37 @@
     [self executingGetRequest:string];
 }
 
--(void)checkOutBook{
-    
+-(void)checkOutBook:(NSNumber *)bookID username:(NSString *)name checkoutTime:(NSString *)time{
+    NSString *string = [NSString stringWithFormat:@"%@/books/%i",API_URL,[bookID intValue]];
+    NSLog(@"%@",string);
+    NSString *parameters = [NSString stringWithFormat:@"lastCheckedOutBy=%@&lastCheckedOut=%@",name, time];
+    [self executingPutRequest:string parameters:parameters];
 }
 
+
+#pragma mark - Custom Method
 -(void)executingGetRequest:(NSString *)urlString{
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     [theRequest addValue: @"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [theRequest setHTTPMethod:@"GET"];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( connection )
+    {
+        _responseData = [[NSMutableData alloc] init];
+    }
+}
+
+
+-(void)executingPutRequest:(NSString *)urlString parameters:(NSString *)parameters{
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *parameterData = [parameters dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    [theRequest addValue: @"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest setHTTPMethod:@"PUT"];
+    [theRequest setHTTPBody:parameterData];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
     

@@ -104,6 +104,7 @@
         vc.bookAuthor = [bookDic objectForKey:AUTHOR];
         vc.bookPublisher = [bookDic objectForKey:PUBLISHER];
         vc.bookTags = [bookDic objectForKey:CATEGORIES];
+        vc.bookID = [bookDic objectForKey:ID];
         NSString *lastCheckOut;
         if ([[bookDic valueForKey:LASTCHECKEDOUT] isEqual:[NSNull null]]) {
             lastCheckOut =@"NO Check Out";

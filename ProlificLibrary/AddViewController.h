@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebServiceCalls.h"
+#import "Utils.h"
 
-@interface AddViewController : UIViewController
+@interface AddViewController : UIViewController<WebServiceCallDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *titleText;
+@property (weak, nonatomic) IBOutlet UITextField *authorText;
+@property (weak, nonatomic) IBOutlet UITextField *publisherText;
+@property (weak, nonatomic) IBOutlet UITextField *tagsText;
 
 @end

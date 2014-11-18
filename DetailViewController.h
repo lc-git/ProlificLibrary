@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebServiceCalls.h"
+#import "Utils.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController<UIAlertViewDelegate,WebServiceCallDelegate>
 
 @property (strong, nonatomic) NSString *bookTitle;
 @property (strong, nonatomic) NSString *bookAuthor;
@@ -16,6 +18,7 @@
 @property (strong, nonatomic) NSString *bookPublisher;
 @property (strong, nonatomic) NSString *lastCheckedOut;
 @property (strong, nonatomic) NSString *lastCheckedOutBy;
+@property (strong, nonatomic) NSNumber *bookID;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

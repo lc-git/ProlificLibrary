@@ -27,5 +27,6 @@
 
 //Custom Method
 -(void)downloadBooks;
+-(void)checkOutBook:(NSNumber *)bookID username:(NSString *)name checkoutTime:(NSString *)time;
 
 @end

@@ -33,5 +33,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)submitButtonPressed:(id)sender {
+    if (_titleText.text.length == 0 || _authorText.text.length == 0) {
+        [Utils showAlertView:@"Invalid Input" message:@"Book title or book author can't be empty."];
+    }
+    
+}
 
 @end

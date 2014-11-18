@@ -10,6 +10,8 @@
 
 @interface DetailViewController ()
 
+@property (strong, nonatomic) NSString *dateString;
+
 @end
 
 @implementation DetailViewController
@@ -42,7 +44,43 @@
 }
 */
 - (IBAction)CheckoutButtonPressed:(id)sender {
+    NSDateFormatter *formatter;
     
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    
+    _dateString = [formatter stringFromDate:[NSDate date]];
+    NSLog(@"%@",_dateString);
+    
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"" message:@"What's your name?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Submit", nil];
+    alertview.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertview show];
+    [self.view addSubview:alertview];
+}
+
+
+#pragma marks - UIAlertView Delegates
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        NSLog(@"%@",[alertView textFieldAtIndex:0].text);
+        WebServiceCalls *ws = [[WebServiceCalls alloc]init];
+        ws.delegate = self;
+        [ws checkOutBook:_bookID username:[alertView textFieldAtIndex:0].text checkoutTime:_dateString];
+    }
+}
+
+#pragma marks - WebServiceCalls Delegates
+-(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
+    if (httpStatusCode ==200) {
+        
+    }else{
+        [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
+    }
+}
+
+
+- (void)connectionFailed:(NSError *)error{
+    [Utils showAlertView:@"Conection Error" message:[error localizedDescription]];
 }
 
 @end
