@@ -12,10 +12,14 @@
 
 -(void)downloadBooks{
     NSString *string = [NSString stringWithFormat:@"%@/books",API_URL];
-    [self executingRequest:string];
+    [self executingGetRequest:string];
 }
 
--(void)executingRequest:(NSString *)urlString{
+-(void)checkOutBook{
+    
+}
+
+-(void)executingGetRequest:(NSString *)urlString{
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     [theRequest addValue: @"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
@@ -35,7 +39,7 @@
     // so that we can append data to it in the didReceiveData method
     // Furthermore, this method is called each time there is a redirect so reinitializing it
     // also serves to clear it
-    //NSLog(@"response: %@",response );
+
     [_responseData setLength:0];
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     _statusCode = (int)[httpResponse statusCode];
@@ -61,7 +65,6 @@
                                                         options:kNilOptions
                                                           error:&jsonParsingError];
     
-    //NSString *responseStringWithEncoded = [[NSString alloc] initWithData: _responseData encoding:NSUTF8StringEncoding];
     
     if (jsonParsingError) {
         NSLog(@"JSON ERROR: %@", [jsonParsingError localizedDescription]);

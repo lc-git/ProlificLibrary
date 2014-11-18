@@ -19,6 +19,7 @@
 #define LASTCHECKEDOUT @"lastCheckedOut"
 #define LASTCHECKEDOUTBY @"lastCheckedOutBy"
 #define TITLE @"title"
+#define PUBLISHER @"publisher"
 #define BOOKURL @"url"
 
 

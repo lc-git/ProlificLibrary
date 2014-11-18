@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailViewController.h"
+#import "AddViewController.h"
 #import "WebServiceCalls.h"
 #import "Utils.h"
 #import "Constant.h"

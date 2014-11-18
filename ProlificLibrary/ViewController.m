@@ -69,6 +69,11 @@
     return 50;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *bookDic = [_booksArr objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"DetailSegue" sender:bookDic];
+}
+
 
 #pragma marks - WebServiceCall Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
@@ -89,6 +94,32 @@
 -(void)parsePatientData:(NSArray *)data{
     _booksArr = data;
     [_tableView reloadData];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"DetailSegue"]) {
+        DetailViewController *vc = segue.destinationViewController;
+        NSDictionary *bookDic = (NSDictionary *)sender;
+        vc.bookTitle = [bookDic objectForKey:TITLE];
+        vc.bookAuthor = [bookDic objectForKey:AUTHOR];
+        vc.bookPublisher = [bookDic objectForKey:PUBLISHER];
+        vc.bookTags = [bookDic objectForKey:CATEGORIES];
+        NSString *lastCheckOut;
+        if ([[bookDic valueForKey:LASTCHECKEDOUT] isEqual:[NSNull null]]) {
+            lastCheckOut =@"NO Check Out";
+        }else{
+            lastCheckOut = [bookDic valueForKey:LASTCHECKEDOUT];
+        }
+        NSString *lastCheckOutBy;
+        if ([[bookDic valueForKey:LASTCHECKEDOUTBY] isEqual:[NSNull null]]) {
+            lastCheckOutBy =@"NO Check Out";
+        }else{
+            lastCheckOutBy = [bookDic valueForKey:LASTCHECKEDOUTBY];
+        }
+        vc.lastCheckedOut = lastCheckOut;
+        vc.lastCheckedOutBy = lastCheckOutBy;
+    }
+    
 }
 
 @end

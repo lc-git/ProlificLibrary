@@ -17,6 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+
+    _titleLabel.text = _bookTitle;
+    _authorLabel.text = _bookAuthor;
+    _publisherLabel.text = _bookPublisher;
+    _tagsLabel.text = _bookTags;
+    NSString *lastCheckOutString = [NSString stringWithFormat:@"%@ @ %@",_lastCheckedOutBy, _lastCheckedOut];
+    _lastCheckOutLabel.text = lastCheckOutString;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +41,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)CheckoutButtonPressed:(id)sender {
+    
+}
 
 @end
