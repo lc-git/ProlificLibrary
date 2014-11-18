@@ -22,6 +22,19 @@
     [self executingPutRequest:string parameters:parameters];
 }
 
+-(void)addBookTitle:(NSString *)title author:(NSString *)author pushliser:(NSString *)publisher categories:(NSString *)categories{
+    NSString *string = [NSString stringWithFormat:@"%@/books",API_URL];
+    NSLog(@"%@",string);
+    NSString *parameters = [NSString stringWithFormat:@"author=%@&categories=%@&title=%@&publisher=%@",author, categories, title, publisher];
+//    NSDictionary *parameters = [NSDictionary alloc] dictionaryWithValuesForKeys:author, AUTHOR, categories, CATEGORIES, title, TITLE, publisher, PUBLISHER, nil];
+    [self executingAddRequest:string parameters:parameters];
+}
+
+-(void)deleteBook:(NSNumber *)bookID{
+    NSString *string = [NSString stringWithFormat:@"%@/books/%i",API_URL,[bookID intValue]];
+    [self executingDeleteRequest:string];
+}
+
 
 #pragma mark - Custom Method
 -(void)executingGetRequest:(NSString *)urlString{
@@ -46,6 +59,39 @@
     [theRequest addValue: @"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [theRequest setHTTPMethod:@"PUT"];
     [theRequest setHTTPBody:parameterData];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( connection )
+    {
+        _responseData = [[NSMutableData alloc] init];
+    }
+}
+
+
+-(void)executingAddRequest:(NSString *)urlString parameters:(NSString *)parameters{
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *parameterData = [parameters dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    //NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[parameterData length]];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    //[theRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest addValue: @"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody:parameterData];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( connection )
+    {
+        _responseData = [[NSMutableData alloc] init];
+    }
+}
+
+-(void)executingDeleteRequest:(NSString *)urlString{
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    [theRequest addValue: @"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest setHTTPMethod:@"DELETE"];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
     

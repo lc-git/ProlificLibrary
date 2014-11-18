@@ -52,7 +52,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="4J0-bO-yms" secondAttribute="trailing" constant="-16" id="cxE-1F-rs0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Books" id="oE4-Vn-rU0"/>
+                    <navigationItem key="navigationItem" title="Books" id="oE4-Vn-rU0">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="Pg7-rW-tWn">
+                            <connections>
+                                <segue destination="4t3-GR-pw9" kind="show" identifier="AddSegue" id="CEZ-kW-nzx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="4J0-bO-yms" id="jec-RH-fHY"/>
                         <segue destination="hn4-mq-gyU" kind="show" identifier="DetailSegue" id="prx-wk-Qls"/>
@@ -178,12 +184,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dx-zC-Nd2">
-                                <rect key="frame" x="279" y="258" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REi-Nw-QDN">
                                 <rect key="frame" x="279" y="341" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -212,6 +212,23 @@
                                     <action selector="CheckoutButtonPressed:" destination="hn4-mq-gyU" eventType="touchUpInside" id="72D-Cl-wN4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10U-pE-Go2">
+                                <rect key="frame" x="279" y="502" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.1219183429" blue="0.08769306918" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="hn4-mq-gyU" eventType="touchUpInside" id="fbl-Nc-ONW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dx-zC-Nd2">
+                                <rect key="frame" x="279" y="258" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -228,11 +245,14 @@
                             <constraint firstAttribute="centerX" secondItem="7E0-6f-ton" secondAttribute="centerX" id="jAg-As-Tsg"/>
                             <constraint firstItem="7E0-6f-ton" firstAttribute="leading" secondItem="iFp-cJ-r4a" secondAttribute="leadingMargin" constant="19" id="lHi-d2-U5Z"/>
                             <constraint firstItem="khf-D7-sm0" firstAttribute="leading" secondItem="iFp-cJ-r4a" secondAttribute="leadingMargin" constant="19" id="lfs-FJ-P7u"/>
+                            <constraint firstAttribute="centerX" secondItem="10U-pE-Go2" secondAttribute="centerX" id="nYj-Ee-CQA"/>
                             <constraint firstItem="XOW-J7-6mz" firstAttribute="leading" secondItem="iFp-cJ-r4a" secondAttribute="leadingMargin" constant="19" id="s5L-ZY-g1O"/>
                             <constraint firstAttribute="centerX" secondItem="khf-D7-sm0" secondAttribute="centerX" id="v4O-xg-IkP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="MbY-K6-Zam"/>
+                    <navigationItem key="navigationItem" title="Detail" id="MbY-K6-Zam">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="yUI-Rc-oe6"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="XOW-J7-6mz" id="Hta-tt-vvE"/>
                         <outlet property="lastCheckOutLabel" destination="REi-Nw-QDN" id="974-bT-rRQ"/>

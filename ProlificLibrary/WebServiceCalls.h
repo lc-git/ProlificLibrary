@@ -28,5 +28,8 @@
 //Custom Method
 -(void)downloadBooks;
 -(void)checkOutBook:(NSNumber *)bookID username:(NSString *)name checkoutTime:(NSString *)time;
+-(void)addBookTitle:(NSString *)title author:(NSString *)author pushliser:(NSString *)publisher categories:(NSString *)categories;
+-(void)deleteBook:(NSNumber *)bookID;
+
 
 @end

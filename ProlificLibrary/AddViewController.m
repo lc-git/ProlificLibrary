@@ -37,7 +37,24 @@
     if (_titleText.text.length == 0 || _authorText.text.length == 0) {
         [Utils showAlertView:@"Invalid Input" message:@"Book title or book author can't be empty."];
     }
-    
+    WebServiceCalls *ws = [[WebServiceCalls alloc]init];
+    ws.delegate = self;
+    [ws addBookTitle:_titleText.text author:_authorText.text pushliser:_publisherText.text categories:_tagsText.text];
+}
+
+
+#pragma marks - WebServiceCalls Delegates
+-(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
+    if (httpStatusCode ==201) {
+        
+    }else{
+        [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
+    }
+}
+
+
+- (void)connectionFailed:(NSError *)error{
+    [Utils showAlertView:@"Conection Error" message:[error localizedDescription]];
 }
 
 @end

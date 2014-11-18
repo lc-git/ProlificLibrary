@@ -18,14 +18,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    WebServiceCalls *ws = [[WebServiceCalls alloc]init];
-    ws.delegate = self;
-    [ws downloadBooks];
-    
     
     //_tableView.backgroundColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    WebServiceCalls *ws = [[WebServiceCalls alloc]init];
+    ws.delegate = self;
+    [ws downloadBooks];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,6 +66,15 @@
 }
 
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [_booksArr removeObjectAtIndex:indexPath.row];
+    [_tableView reloadData];
+    WebServiceCalls *ws = [[WebServiceCalls alloc]init];
+    ws.delegate = self;
+    [ws deleteBook:[[_booksArr objectAtIndex:indexPath.row] objectForKey:ID]];
+    
+}
+
 #pragma marks - Table View Delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
@@ -77,9 +88,11 @@
 
 #pragma marks - WebServiceCall Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
-    if (httpStatusCode ==200) {
+    if (httpStatusCode == 200) {
         NSLog(@"%@",data);
         [self parsePatientData:data];
+    } else if(httpStatusCode == 204){
+        
     }else{
         [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
     }
@@ -92,7 +105,7 @@
 
 #pragma marks - Custom Methods
 -(void)parsePatientData:(NSArray *)data{
-    _booksArr = data;
+    _booksArr = [[NSMutableArray alloc] initWithArray:data];
     [_tableView reloadData];
 }
 
@@ -102,21 +115,31 @@
         NSDictionary *bookDic = (NSDictionary *)sender;
         vc.bookTitle = [bookDic objectForKey:TITLE];
         vc.bookAuthor = [bookDic objectForKey:AUTHOR];
-        vc.bookPublisher = [bookDic objectForKey:PUBLISHER];
         vc.bookTags = [bookDic objectForKey:CATEGORIES];
         vc.bookID = [bookDic objectForKey:ID];
+        
+        NSString *publisher;
+        if ([[bookDic valueForKey:PUBLISHER] isEqual:[NSNull null]]) {
+            publisher =@"";
+        }else{
+            publisher = [bookDic valueForKey:PUBLISHER];
+        }
+        
         NSString *lastCheckOut;
         if ([[bookDic valueForKey:LASTCHECKEDOUT] isEqual:[NSNull null]]) {
             lastCheckOut =@"NO Check Out";
         }else{
             lastCheckOut = [bookDic valueForKey:LASTCHECKEDOUT];
         }
+        
         NSString *lastCheckOutBy;
         if ([[bookDic valueForKey:LASTCHECKEDOUTBY] isEqual:[NSNull null]]) {
             lastCheckOutBy =@"NO Check Out";
         }else{
             lastCheckOutBy = [bookDic valueForKey:LASTCHECKEDOUTBY];
         }
+        
+        vc.bookPublisher = publisher;
         vc.lastCheckedOut = lastCheckOut;
         vc.lastCheckedOutBy = lastCheckOutBy;
     }

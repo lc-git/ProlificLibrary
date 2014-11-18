@@ -58,10 +58,18 @@
     [self.view addSubview:alertview];
 }
 
+- (IBAction)deleteButtonPressed:(id)sender {
+    WebServiceCalls *ws = [[WebServiceCalls alloc]init];
+    ws.delegate = self;
+    [ws deleteBook:_bookID];
+    [Utils showAlertView:@"Alert" message:@"Do you really want to delete it?"];
+}
 
 #pragma marks - UIAlertView Delegates
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
+        _lastCheckOutLabel.text = [NSString stringWithFormat:@"%@ @ %@",[alertView textFieldAtIndex:0].text,_dateString];
+        
         NSLog(@"%@",[alertView textFieldAtIndex:0].text);
         WebServiceCalls *ws = [[WebServiceCalls alloc]init];
         ws.delegate = self;
@@ -71,8 +79,10 @@
 
 #pragma marks - WebServiceCalls Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
-    if (httpStatusCode ==200) {
+    if (httpStatusCode == 200) {
         
+    }else if(httpStatusCode == 204){
+        [self goBack:nil];
     }else{
         [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
     }
@@ -81,6 +91,12 @@
 
 - (void)connectionFailed:(NSError *)error{
     [Utils showAlertView:@"Conection Error" message:[error localizedDescription]];
+}
+
+
+#pragma marks - Custom Method
+- (IBAction)goBack:(id)sender  {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
