@@ -15,6 +15,8 @@
 		E5175C391A1AC66C00B72C9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5175C381A1AC66C00B72C9C /* Images.xcassets */; };
 		E5175C3C1A1AC66C00B72C9C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5175C3A1A1AC66C00B72C9C /* LaunchScreen.xib */; };
 		E5175C481A1AC66C00B72C9C /* ProlificLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C471A1AC66C00B72C9C /* ProlificLibraryTests.m */; };
+		E5175C561A1ACE9900B72C9C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C551A1ACE9900B72C9C /* DetailViewController.m */; };
+		E5175C591A1ACF4E00B72C9C /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C581A1ACF4E00B72C9C /* AddViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,10 @@
 		E5175C411A1AC66C00B72C9C /* ProlificLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProlificLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5175C461A1AC66C00B72C9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5175C471A1AC66C00B72C9C /* ProlificLibraryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProlificLibraryTests.m; sourceTree = "<group>"; };
+		E5175C541A1ACE9900B72C9C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ../DetailViewController.h; sourceTree = "<group>"; };
+		E5175C551A1ACE9900B72C9C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../DetailViewController.m; sourceTree = "<group>"; };
+		E5175C571A1ACF4E00B72C9C /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
+		E5175C581A1ACF4E00B72C9C /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,10 @@
 				E5175C2D1A1AC66C00B72C9C /* AppDelegate.m */,
 				E5175C321A1AC66C00B72C9C /* ViewController.h */,
 				E5175C331A1AC66C00B72C9C /* ViewController.m */,
+				E5175C541A1ACE9900B72C9C /* DetailViewController.h */,
+				E5175C551A1ACE9900B72C9C /* DetailViewController.m */,
+				E5175C571A1ACF4E00B72C9C /* AddViewController.h */,
+				E5175C581A1ACF4E00B72C9C /* AddViewController.m */,
 				E5175C351A1AC66C00B72C9C /* Main.storyboard */,
 				E5175C381A1AC66C00B72C9C /* Images.xcassets */,
 				E5175C3A1A1AC66C00B72C9C /* LaunchScreen.xib */,
@@ -222,7 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5175C561A1ACE9900B72C9C /* DetailViewController.m in Sources */,
 				E5175C2E1A1AC66C00B72C9C /* AppDelegate.m in Sources */,
+				E5175C591A1ACF4E00B72C9C /* AddViewController.m in Sources */,
 				E5175C311A1AC66C00B72C9C /* ProlificLibrary.xcdatamodeld in Sources */,
 				E5175C341A1AC66C00B72C9C /* ViewController.m in Sources */,
 				E5175C2B1A1AC66C00B72C9C /* main.m in Sources */,
