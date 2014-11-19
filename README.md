@@ -10,6 +10,10 @@ Features
 ===============
 1.Books ViewController
 -----------
+
+<img src="https://github.com/lc-git/ProlificLibrary/blob/master/ProlificLibrary/screenshot1.png" width="300" height="530">
+<img src="https://github.com/lc-git/ProlificLibrary/blob/master/ProlificLibrary/screenshot2.png" width="300" height="530">
+
 *List all the books
 
 *Swipe left to delete one book
@@ -24,12 +28,20 @@ Features
 
 2.Add ViewController
 -----------
+
+<img src="https://github.com/lc-git/ProlificLibrary/blob/master/ProlificLibrary/screenshot4.png" width="270" height="470">
+<img src="https://github.com/lc-git/ProlificLibrary/blob/master/ProlificLibrary/screenshot5.png" width="270" height="470">
+<img src="https://github.com/lc-git/ProlificLibrary/blob/master/ProlificLibrary/screenshot6.png" width="270" height="470">
+
 *Input title, author, publisher and categories to add a new book. Title and author can't be empty.
 
 *Press Done to leave add viewcontroller without saving change
 
 3.Detail ViewController
 -----------
+
+<img src="https://github.com/lc-git/ProlificLibrary/blob/master/ProlificLibrary/screenshot3.png" width="300" height="530">
+
 *Press "Check Out" to checkout the book and update the last checkout history item
 
 *Use "Delete" button to delete this book and jump back to home screen. (the same as swiping left at tableview)
