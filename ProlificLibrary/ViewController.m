@@ -94,6 +94,8 @@
             [self parsePatientData:data];
         }else{
             NSLog(@"Delete All");
+            _booksArr = [[NSMutableArray alloc]init];
+            [_tableView reloadData];
         }
     } else if(httpStatusCode == 204){
         NSLog(@"Delete one book");
