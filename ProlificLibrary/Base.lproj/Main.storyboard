@@ -216,7 +216,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REi-Nw-QDN">
-                                <rect key="frame" x="35" y="369" width="42" height="21"/>
+                                <rect key="frame" x="35" y="338" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="B66-TL-voW"/>
                                 </constraints>
@@ -235,7 +235,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Check Out:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7r2-DI-fop">
-                                <rect key="frame" x="35" y="305" width="111" height="49"/>
+                                <rect key="frame" x="35" y="305" width="111" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -265,7 +265,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcQ-e1-jyf">
-                                <rect key="frame" x="278" y="559.5" width="43" height="20.5"/>
+                                <rect key="frame" x="278" y="559" width="43" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -328,7 +328,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="NuT-JK-Ib1"/>
                                 <exclude reference="Clz-Bi-Wam"/>
+                                <exclude reference="0H0-5c-Fdz"/>
                             </mask>
                         </variation>
                     </view>
