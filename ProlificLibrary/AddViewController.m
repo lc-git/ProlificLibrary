@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _titleText.delegate = self;
+    _authorText.delegate = self;
+    _publisherText.delegate = self;
+    _tagsText.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,6 +82,19 @@
 
 - (void)connectionFailed:(NSError *)error{
     [Utils showAlertView:@"Conection Error" message:[error localizedDescription]];
+}
+
+
+#pragma mark - UITextField Delegates
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    NSInteger nextTag = textField.tag + 1;
+    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+    if (nextResponder) {
+        [nextResponder becomeFirstResponder];
+    } else {
+        [textField resignFirstResponder];
+    }
+    return YES;
 }
 
 
