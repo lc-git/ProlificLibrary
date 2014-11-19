@@ -12,7 +12,9 @@
 
 @end
 
-@implementation ViewController
+@implementation ViewController{
+    NSArray *searchResults;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,7 +43,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _booksArr.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return searchResults.count;
+    }else{
+        return _booksArr.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -54,13 +60,20 @@
         
     }
     
-    //cell.backgroundColor = [UIColor colorWithRed:211.0/255.0 green:229.0/255.0 blue:231.0/255/0 alpha:1.0];
-    cell.textLabel.text = [[_booksArr objectAtIndex:indexPath.row] objectForKey:TITLE];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:TITLE];
+        cell.detailTextLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:AUTHOR];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
+    }else{
+        //cell.backgroundColor = [UIColor colorWithRed:211.0/255.0 green:229.0/255.0 blue:231.0/255/0 alpha:1.0];
+        cell.textLabel.text = [[_booksArr objectAtIndex:indexPath.row] objectForKey:TITLE];
+        
+        //cell.textLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
+        
+        cell.detailTextLabel.text = [[_booksArr objectAtIndex:indexPath.row] objectForKey:AUTHOR];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
+    }
     
-    //cell.textLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
-    
-    cell.detailTextLabel.text = [[_booksArr objectAtIndex:indexPath.row] objectForKey:AUTHOR];
-    cell.detailTextLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
     
     return cell;
 }
@@ -158,6 +171,21 @@
         vc.lastCheckedOutBy = lastCheckOutBy;
     }
     
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@", searchText];
+    searchResults = [_booksArr filteredArrayUsingPredicate:resultPredicate];
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
 }
 
 #pragma mark - Button Events Pressed

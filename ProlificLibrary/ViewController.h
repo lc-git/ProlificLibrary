@@ -13,7 +13,7 @@
 #import "Utils.h"
 #import "Constant.h"
 
-@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,WebServiceCallDelegate>
+@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UISearchBarDelegate,UISearchDisplayDelegate,UISearchControllerDelegate,WebServiceCallDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
