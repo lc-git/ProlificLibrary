@@ -243,7 +243,7 @@
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khf-D7-sm0">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khf-D7-sm0">
                                 <rect key="frame" x="90" y="422" width="420" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Check Out">
@@ -253,7 +253,7 @@
                                     <action selector="CheckoutButtonPressed:" destination="hn4-mq-gyU" eventType="touchUpInside" id="72D-Cl-wN4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10U-pE-Go2">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10U-pE-Go2">
                                 <rect key="frame" x="279" y="497" width="46" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Delete">
@@ -264,6 +264,12 @@
                                     <action selector="deleteButtonPressed:" destination="hn4-mq-gyU" eventType="touchUpInside" id="fbl-Nc-ONW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="_____" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcQ-e1-jyf">
+                                <rect key="frame" x="281" y="503" width="54" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -271,6 +277,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="7E0-6f-ton" secondAttribute="trailing" constant="19" id="9vn-Og-kmV"/>
                             <constraint firstItem="7r2-DI-fop" firstAttribute="leading" secondItem="iFp-cJ-r4a" secondAttribute="leadingMargin" constant="19" id="Bck-lF-hvS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XOW-J7-6mz" secondAttribute="trailing" constant="19" id="DP0-Ge-noE"/>
+                            <constraint firstItem="hqy-1U-nea" firstAttribute="top" secondItem="10U-pE-Go2" secondAttribute="bottom" constant="20" id="Drt-VX-0c0"/>
                             <constraint firstItem="8Dx-zC-Nd2" firstAttribute="leading" secondItem="fb2-6h-4jY" secondAttribute="trailing" constant="10" id="Ilo-1w-JFw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="khf-D7-sm0" secondAttribute="trailing" constant="19" id="KhK-Zx-639"/>
                             <constraint firstItem="A6C-2y-SIJ" firstAttribute="leading" secondItem="OdC-WH-7NE" secondAttribute="trailing" constant="10" id="OYd-cx-lap"/>
@@ -278,11 +285,14 @@
                             <constraint firstAttribute="centerX" secondItem="XOW-J7-6mz" secondAttribute="centerX" id="SpA-46-czS"/>
                             <constraint firstItem="REi-Nw-QDN" firstAttribute="leading" secondItem="iFp-cJ-r4a" secondAttribute="leadingMargin" constant="19" id="ap5-N4-pBr"/>
                             <constraint firstItem="fb2-6h-4jY" firstAttribute="leading" secondItem="iFp-cJ-r4a" secondAttribute="leadingMargin" constant="19" id="d3y-RP-CeN"/>
+                            <constraint firstItem="10U-pE-Go2" firstAttribute="top" secondItem="khf-D7-sm0" secondAttribute="bottom" constant="10" id="g0G-Ca-803"/>
+                            <constraint firstItem="hqy-1U-nea" firstAttribute="top" secondItem="qcQ-e1-jyf" secondAttribute="bottom" constant="20" id="hfP-mZ-2TB"/>
                             <constraint firstAttribute="centerX" secondItem="7E0-6f-ton" secondAttribute="centerX" id="jAg-As-Tsg"/>
                             <constraint firstItem="7E0-6f-ton" firstAttribute="leading" secondItem="iFp-cJ-r4a" secondAttribute="leadingMargin" constant="19" id="lHi-d2-U5Z"/>
                             <constraint firstItem="khf-D7-sm0" firstAttribute="leading" secondItem="iFp-cJ-r4a" secondAttribute="leadingMargin" constant="19" id="lfs-FJ-P7u"/>
                             <constraint firstAttribute="centerX" secondItem="10U-pE-Go2" secondAttribute="centerX" id="nYj-Ee-CQA"/>
                             <constraint firstItem="XOW-J7-6mz" firstAttribute="leading" secondItem="iFp-cJ-r4a" secondAttribute="leadingMargin" constant="19" id="s5L-ZY-g1O"/>
+                            <constraint firstAttribute="centerX" secondItem="qcQ-e1-jyf" secondAttribute="centerX" id="sEK-7r-pYh"/>
                             <constraint firstAttribute="centerX" secondItem="khf-D7-sm0" secondAttribute="centerX" id="v4O-xg-IkP"/>
                         </constraints>
                     </view>
