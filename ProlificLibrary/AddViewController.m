@@ -29,10 +29,11 @@
 - (IBAction)submitButtonPressed:(id)sender {
     if (_titleText.text.length == 0 || _authorText.text.length == 0) {
         [Utils showAlertView:@"Invalid Input" message:@"Book title or book author can't be empty."];
+    }else{
+        WebServiceCalls *ws = [[WebServiceCalls alloc]init];
+        ws.delegate = self;
+        [ws addBookTitle:_titleText.text author:_authorText.text pushliser:_publisherText.text categories:_tagsText.text];
     }
-    WebServiceCalls *ws = [[WebServiceCalls alloc]init];
-    ws.delegate = self;
-    [ws addBookTitle:_titleText.text author:_authorText.text pushliser:_publisherText.text categories:_tagsText.text];
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
@@ -53,6 +54,8 @@
         if(buttonIndex == 1){
             [self dismissViewControllerAnimated:YES completion:nil];
         }
+    }else if (alertView.tag == 2){
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -62,7 +65,10 @@
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
     if (httpStatusCode ==200) {
         NSLog(@"Add new book");
-        [Utils showAlertView:@"Congratulation" message:@"You add a new book!"];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Congratulation" message:@"You add a new book!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alertview.tag = 2;
+        [alertview show];
+        [self.view addSubview:alertview];
     }else{
         [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
     }
