@@ -62,6 +62,7 @@
     [self.view addSubview:alertview];
 }
 
+//Use activity controller to share text or image at Facebook or Twitter
 - (IBAction)actionButtonPressed:(id)sender {
     NSArray * activityItems = @[[NSString stringWithFormat:@"I like this book: %@",_bookTitle], [NSURL URLWithString:@"http://www.prolificinteractive.com"]];
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
