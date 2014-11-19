@@ -94,8 +94,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *bookDic = [_booksArr objectAtIndex:indexPath.row];
+    NSDictionary *bookDic;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        bookDic = [searchResults objectAtIndex:indexPath.row];
+    }else{
+        bookDic = [_booksArr objectAtIndex:indexPath.row];
+    }
     [self performSegueWithIdentifier:@"DetailSegue" sender:bookDic];
+    searchResults = [[NSArray alloc] init];
+    self.searchDisplayController.searchBar.text = nil;
 }
 
 
@@ -175,7 +182,7 @@
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@ OR author contains[c] %@", searchText, searchText];
     searchResults = [_booksArr filteredArrayUsingPredicate:resultPredicate];
 }
 
