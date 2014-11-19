@@ -35,7 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma marks - TableView DataSource
+#pragma mark - TableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -75,7 +75,7 @@
     
 }
 
-#pragma marks - Table View Delegate
+#pragma mark - Table View Delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
@@ -86,7 +86,7 @@
 }
 
 
-#pragma marks - WebServiceCall Delegates
+#pragma mark - WebServiceCall Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
     if (httpStatusCode == 200) {
         if (data.count > 0) {
@@ -119,8 +119,14 @@
         NSDictionary *bookDic = (NSDictionary *)sender;
         vc.bookTitle = [bookDic objectForKey:TITLE];
         vc.bookAuthor = [bookDic objectForKey:AUTHOR];
-        vc.bookTags = [bookDic objectForKey:CATEGORIES];
         vc.bookID = [bookDic objectForKey:ID];
+        
+        NSString *tags;
+        if ([[bookDic valueForKey:CATEGORIES] isEqual:[NSNull null]]) {
+            tags =@"";
+        }else{
+            tags = [bookDic valueForKey:CATEGORIES];
+        }
         
         NSString *publisher;
         if ([[bookDic valueForKey:PUBLISHER] isEqual:[NSNull null]]) {
@@ -143,6 +149,8 @@
             lastCheckOutBy = [bookDic valueForKey:LASTCHECKEDOUTBY];
         }
         
+        
+        vc.bookTags = tags;
         vc.bookPublisher = publisher;
         vc.lastCheckedOut = lastCheckOut;
         vc.lastCheckedOutBy = lastCheckOutBy;
