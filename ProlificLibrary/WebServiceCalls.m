@@ -15,18 +15,17 @@
     [self executingGetRequest:string];
 }
 
--(void)checkOutBook:(NSNumber *)bookID username:(NSString *)name checkoutTime:(NSString *)time{
+-(void)checkOutBook:(NSNumber *)bookID username:(NSString *)name{
     NSString *string = [NSString stringWithFormat:@"%@/books/%i",API_URL,[bookID intValue]];
     NSLog(@"%@",string);
-    NSString *parameters = [NSString stringWithFormat:@"lastCheckedOutBy=%@&lastCheckedOut=%@",name, time];
+    NSString *parameters = [NSString stringWithFormat:@"lastCheckedOutBy=%@",name];
     [self executingPutRequest:string parameters:parameters];
 }
 
 -(void)addBookTitle:(NSString *)title author:(NSString *)author pushliser:(NSString *)publisher categories:(NSString *)categories{
-    NSString *string = [NSString stringWithFormat:@"%@/books",API_URL];
+    NSString *string = [NSString stringWithFormat:@"%@/books/",API_URL];
     NSLog(@"%@",string);
     NSString *parameters = [NSString stringWithFormat:@"author=%@&categories=%@&title=%@&publisher=%@",author, categories, title, publisher];
-//    NSDictionary *parameters = [NSDictionary alloc] dictionaryWithValuesForKeys:author, AUTHOR, categories, CATEGORIES, title, TITLE, publisher, PUBLISHER, nil];
     [self executingAddRequest:string parameters:parameters];
 }
 
@@ -76,9 +75,7 @@
 -(void)executingAddRequest:(NSString *)urlString parameters:(NSString *)parameters{
     NSURL *url = [NSURL URLWithString:urlString];
     NSData *parameterData = [parameters dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    //NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[parameterData length]];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-    //[theRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [theRequest addValue: @"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [theRequest setHTTPMethod:@"POST"];
     [theRequest setHTTPBody:parameterData];

@@ -19,7 +19,6 @@
 		E5175C591A1ACF4E00B72C9C /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C581A1ACF4E00B72C9C /* AddViewController.m */; };
 		E5175C5D1A1AF1BA00B72C9C /* WebServiceCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C5C1A1AF1BA00B72C9C /* WebServiceCalls.m */; };
 		E5175C621A1AF75600B72C9C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C611A1AF75600B72C9C /* Utils.m */; };
-		E524ECA61A1C0B6700D626E5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E524ECA51A1C0B6700D626E5 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E524ECA61A1C0B6700D626E5 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,12 +99,7 @@
 			children = (
 				E5175C2C1A1AC66C00B72C9C /* AppDelegate.h */,
 				E5175C2D1A1AC66C00B72C9C /* AppDelegate.m */,
-				E5175C321A1AC66C00B72C9C /* ViewController.h */,
-				E5175C331A1AC66C00B72C9C /* ViewController.m */,
-				E5175C541A1ACE9900B72C9C /* DetailViewController.h */,
-				E5175C551A1ACE9900B72C9C /* DetailViewController.m */,
-				E5175C571A1ACF4E00B72C9C /* AddViewController.h */,
-				E5175C581A1ACF4E00B72C9C /* AddViewController.m */,
+				E524ECA71A1C2FEC00D626E5 /* class */,
 				E5175C5F1A1AF1DA00B72C9C /* Command */,
 				E5175C5E1A1AF1C600B72C9C /* Util */,
 				E5175C351A1AC66C00B72C9C /* Main.storyboard */,
@@ -162,6 +155,19 @@
 				E5175C5C1A1AF1BA00B72C9C /* WebServiceCalls.m */,
 			);
 			name = Command;
+			sourceTree = "<group>";
+		};
+		E524ECA71A1C2FEC00D626E5 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				E5175C321A1AC66C00B72C9C /* ViewController.h */,
+				E5175C331A1AC66C00B72C9C /* ViewController.m */,
+				E5175C541A1ACE9900B72C9C /* DetailViewController.h */,
+				E5175C551A1ACE9900B72C9C /* DetailViewController.m */,
+				E5175C571A1ACF4E00B72C9C /* AddViewController.h */,
+				E5175C581A1ACF4E00B72C9C /* AddViewController.m */,
+			);
+			name = class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -34,22 +34,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
-#pragma marks - Button Pressed Events
+#pragma mark - Button Pressed Events
 - (IBAction)CheckoutButtonPressed:(id)sender {
     NSDateFormatter *formatter;
     
     formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     _dateString = [formatter stringFromDate:[NSDate date]];
     NSLog(@"%@",_dateString);
@@ -80,7 +72,7 @@
 }
 
 
-#pragma marks - UIAlertView Delegates
+#pragma mark - UIAlertView Delegates
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
         _lastCheckOutLabel.text = [NSString stringWithFormat:@"%@ @ %@",[alertView textFieldAtIndex:0].text,_dateString];
@@ -88,11 +80,11 @@
         NSLog(@"%@",[alertView textFieldAtIndex:0].text);
         WebServiceCalls *ws = [[WebServiceCalls alloc]init];
         ws.delegate = self;
-        [ws checkOutBook:_bookID username:[alertView textFieldAtIndex:0].text checkoutTime:_dateString];
+        [ws checkOutBook:_bookID username:[alertView textFieldAtIndex:0].text];
     }
 }
 
-#pragma marks - WebServiceCalls Delegates
+#pragma mark - WebServiceCalls Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
     if (httpStatusCode == 200) {
         NSLog(@"Check out a book");
@@ -110,7 +102,7 @@
 }
 
 
-#pragma marks - Custom Method
+#pragma mark - Custom Method
 - (IBAction)goBack:(id)sender  {
     [self.navigationController popViewControllerAnimated:YES];
 }

@@ -107,7 +107,7 @@
     [Utils showAlertView:@"Conection Error" message:[error localizedDescription]];
 }
 
-#pragma marks - Custom Methods
+#pragma mark - Custom Methods
 -(void)parsePatientData:(NSArray *)data{
     _booksArr = [[NSMutableArray alloc] initWithArray:data];
     [_tableView reloadData];
@@ -150,6 +150,7 @@
     
 }
 
+#pragma mark - Button Events Pressed
 - (IBAction)deleteAllButtonPressed:(id)sender {
     UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Do you really want to delete all the books?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
     [alertview show];
@@ -157,7 +158,7 @@
 }
 
 
-#pragma marks - UIAlertView Delegates
+#pragma mark - UIAlertView Delegates
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 1){
         WebServiceCalls *ws = [[WebServiceCalls alloc]init];
