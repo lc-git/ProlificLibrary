@@ -89,10 +89,14 @@
 #pragma marks - WebServiceCall Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
     if (httpStatusCode == 200) {
-        NSLog(@"%@",data);
-        [self parsePatientData:data];
+        if (data.count > 0) {
+            NSLog(@"%@",data);
+            [self parsePatientData:data];
+        }else{
+            NSLog(@"Delete All");
+        }
     } else if(httpStatusCode == 204){
-        
+        NSLog(@"Delete one book");
     }else{
         [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
     }
@@ -146,4 +150,19 @@
     
 }
 
+- (IBAction)deleteAllButtonPressed:(id)sender {
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Do you really want to delete all the books?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
+    [alertview show];
+    [self.view addSubview:alertview];
+}
+
+
+#pragma marks - UIAlertView Delegates
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 1){
+        WebServiceCalls *ws = [[WebServiceCalls alloc]init];
+        ws.delegate = self;
+        [ws deleteAllBooks];
+    }
+}
 @end

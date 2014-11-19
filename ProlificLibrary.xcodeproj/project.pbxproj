@@ -19,6 +19,7 @@
 		E5175C591A1ACF4E00B72C9C /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C581A1ACF4E00B72C9C /* AddViewController.m */; };
 		E5175C5D1A1AF1BA00B72C9C /* WebServiceCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C5C1A1AF1BA00B72C9C /* WebServiceCalls.m */; };
 		E5175C621A1AF75600B72C9C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C611A1AF75600B72C9C /* Utils.m */; };
+		E524ECA61A1C0B6700D626E5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E524ECA51A1C0B6700D626E5 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E5175C5C1A1AF1BA00B72C9C /* WebServiceCalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceCalls.m; sourceTree = "<group>"; };
 		E5175C601A1AF75600B72C9C /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E5175C611A1AF75600B72C9C /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		E524ECA51A1C0B6700D626E5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E524ECA61A1C0B6700D626E5 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +113,7 @@
 				E5175C381A1AC66C00B72C9C /* Images.xcassets */,
 				E5175C3A1A1AC66C00B72C9C /* LaunchScreen.xib */,
 				E5175C2F1A1AC66C00B72C9C /* ProlificLibrary.xcdatamodeld */,
+				E524ECA51A1C0B6700D626E5 /* Social.framework */,
 				E5175C281A1AC66C00B72C9C /* Supporting Files */,
 			);
 			path = ProlificLibrary;
@@ -458,6 +462,7 @@
 				E5175C4D1A1AC66C00B72C9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5175C4E1A1AC66C00B72C9C /* Build configuration list for PBXNativeTarget "ProlificLibraryTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +471,7 @@
 				E5175C501A1AC66C00B72C9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
 #import "WebServiceCalls.h"
 #import "Utils.h"
 
-@interface DetailViewController : UIViewController<UIAlertViewDelegate,WebServiceCallDelegate>
+@interface DetailViewController : UIViewController<UIAlertViewDelegate,UIActionSheetDelegate,WebServiceCallDelegate>
 
 @property (strong, nonatomic) NSString *bookTitle;
 @property (strong, nonatomic) NSString *bookAuthor;
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastCheckOutLabel;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
 
 
 @end

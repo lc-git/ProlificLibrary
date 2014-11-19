@@ -10,7 +10,7 @@
 #import "WebServiceCalls.h"
 #import "Utils.h"
 
-@interface AddViewController : UIViewController<WebServiceCallDelegate>
+@interface AddViewController : UIViewController<UIAlertViewDelegate,WebServiceCallDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleText;
 @property (weak, nonatomic) IBOutlet UITextField *authorText;

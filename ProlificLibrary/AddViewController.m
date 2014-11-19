@@ -42,11 +42,38 @@
     [ws addBookTitle:_titleText.text author:_authorText.text pushliser:_publisherText.text categories:_tagsText.text];
 }
 
+//- (IBAction)doneButtonPressed:(id)sender {
+//    if (_authorText.text.length == 0 && _titleText.text.length == 0 && _tagsText.text.length == 0 && _publisherText.text.length == 0) {
+//        [self goBack:nil];
+//    }else{
+//        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Do you really want to leave with unsaved change?" delegate:self cancelButtonTitle:@"Stay" otherButtonTitles:@"Leave", nil];
+//        [alertview show];
+//        [self.view addSubview:alertview];
+//    }
+//}
+
+- (IBAction)doneButtonPressed:(id)sender {
+    if (_authorText.text.length == 0 && _titleText.text.length == 0 && _tagsText.text.length == 0 && _publisherText.text.length == 0) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Do you really want to leave with unsaved change?" delegate:self cancelButtonTitle:@"Stay" otherButtonTitles:@"Leave", nil];
+        [alertview show];
+        [self.view addSubview:alertview];
+    }
+}
+
+#pragma marks - UIAlertView Delegates
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 1){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 
 #pragma marks - WebServiceCalls Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
     if (httpStatusCode ==201) {
-        
+        NSLog(@"Add new book");
     }else{
         [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
     }
@@ -56,5 +83,7 @@
 - (void)connectionFailed:(NSError *)error{
     [Utils showAlertView:@"Conection Error" message:[error localizedDescription]];
 }
+
+
 
 @end

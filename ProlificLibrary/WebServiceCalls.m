@@ -35,6 +35,10 @@
     [self executingDeleteRequest:string];
 }
 
+-(void)deleteAllBooks{
+    NSString *string = [NSString stringWithFormat:@"%@/clean",API_URL];
+    [self executingDeleteAllRequest:string];
+}
 
 #pragma mark - Custom Method
 -(void)executingGetRequest:(NSString *)urlString{
@@ -88,6 +92,20 @@
 }
 
 -(void)executingDeleteRequest:(NSString *)urlString{
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    [theRequest addValue: @"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest setHTTPMethod:@"DELETE"];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( connection )
+    {
+        _responseData = [[NSMutableData alloc] init];
+    }
+}
+
+-(void)executingDeleteAllRequest:(NSString *)urlString{
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     [theRequest addValue: @"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];

@@ -43,6 +43,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma marks - Button Pressed Events
 - (IBAction)CheckoutButtonPressed:(id)sender {
     NSDateFormatter *formatter;
     
@@ -65,6 +67,19 @@
     [Utils showAlertView:@"Alert" message:@"Do you really want to delete it?"];
 }
 
+- (IBAction)actionButtonPressed:(id)sender {
+    NSArray * activityItems = @[[NSString stringWithFormat:@"I like this book: %@",_bookTitle], [NSURL URLWithString:@"http://www.prolificinteractive.com"]];
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    controller.excludedActivityTypes = @[UIActivityTypePostToWeibo,
+                                         UIActivityTypeMessage, UIActivityTypeMail,
+                                         UIActivityTypePrint, UIActivityTypeCopyToPasteboard,
+                                         UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll,
+                                         UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
+                                         UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+
 #pragma marks - UIAlertView Delegates
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
@@ -80,8 +95,9 @@
 #pragma marks - WebServiceCalls Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
     if (httpStatusCode == 200) {
-        
+        NSLog(@"Check out a book");
     }else if(httpStatusCode == 204){
+        NSLog(@"Delete one book");
         [self goBack:nil];
     }else{
         [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
