@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+@property (strong) UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation ViewController{
@@ -21,9 +23,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    //_tableView.backgroundColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
+    
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
+    //Add GET Request activity indicator
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -109,6 +114,7 @@
 #pragma mark - WebServiceCall Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
     if (httpStatusCode == 200) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if (data.count > 0) {
             NSLog(@"%@",data);
             [self parsePatientData:data];

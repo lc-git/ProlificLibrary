@@ -105,6 +105,7 @@
 				E5175C5F1A1AF1DA00B72C9C /* Command */,
 				E5175C5E1A1AF1C600B72C9C /* Util */,
 				E52E27C81A1C6FA1005335DB /* Image */,
+				E52E27CB1A1CF54C005335DB /* Screenshot */,
 				E5175C351A1AC66C00B72C9C /* Main.storyboard */,
 				E5175C381A1AC66C00B72C9C /* Images.xcassets */,
 				E5175C3A1A1AC66C00B72C9C /* LaunchScreen.xib */,
@@ -179,6 +180,13 @@
 				E52E27C91A1C6FB5005335DB /* books.png */,
 			);
 			name = Image;
+			sourceTree = "<group>";
+		};
+		E52E27CB1A1CF54C005335DB /* Screenshot */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Screenshot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
