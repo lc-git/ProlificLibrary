@@ -11,6 +11,8 @@
 @interface ViewController ()
 
 @property (strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) TableViewController *searchResultsController;
 
 @end
 
@@ -31,6 +33,20 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
+    
+    //configure the searchcontroller
+    _searchResultsController = [[TableViewController alloc] init];
+    _searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultsController];
+    self.searchController.searchResultsUpdater = self;
+    [self.searchController.searchBar sizeToFit];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+    
+    self.searchResultsController.tableView.delegate = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.delegate = self;
+    self.definesPresentationContext = YES;
+    
     //Add GET Request activity indicator
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
@@ -38,14 +54,19 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBookList) name:UPDATE_BOOK_LIST object:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
 
 #pragma mark - TableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -53,11 +74,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return searchResults.count;
-    }else{
         return _booksArr.count;
-    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -69,20 +86,13 @@
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
     }
+    //cell.backgroundColor = [UIColor colorWithRed:211.0/255.0 green:229.0/255.0 blue:231.0/255/0 alpha:1.0];
+    cell.textLabel.text = [[_booksArr objectAtIndex:indexPath.row] objectForKey:TITLE];
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:TITLE];
-        cell.detailTextLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:AUTHOR];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
-    }else{
-        //cell.backgroundColor = [UIColor colorWithRed:211.0/255.0 green:229.0/255.0 blue:231.0/255/0 alpha:1.0];
-        cell.textLabel.text = [[_booksArr objectAtIndex:indexPath.row] objectForKey:TITLE];
-        
-        //cell.textLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
-        
-        cell.detailTextLabel.text = [[_booksArr objectAtIndex:indexPath.row] objectForKey:AUTHOR];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
-    }
+    //cell.textLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
+    
+    cell.detailTextLabel.text = [[_booksArr objectAtIndex:indexPath.row] objectForKey:AUTHOR];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:117.0/255.0 green:142.0/255.0 blue:183.0/255/0 alpha:1.0];
     
     
     return cell;
@@ -105,16 +115,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *bookDic;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        bookDic = [searchResults objectAtIndex:indexPath.row];
-    }else{
+    
+    if (tableView == self.tableView) {
         bookDic = [_booksArr objectAtIndex:indexPath.row];
+    } else {
+        bookDic = [searchResults objectAtIndex:indexPath.row];
+        
     }
     [self performSegueWithIdentifier:@"DetailSegue" sender:bookDic];
-    searchResults = [[NSArray alloc] init];
-    self.searchDisplayController.searchBar.text = nil;
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    self.searchController.active = NO;
 }
 
+#pragma mark - UISearchResultsUpdating
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchText = searchController.searchBar.text;
+    [self filterContentForSearchText:searchText];
+    _searchResultsController.searchResults = searchResults;
+    [_searchResultsController.tableView reloadData];
+}
 
 #pragma mark - WebServiceCall Delegates
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
@@ -192,7 +212,7 @@
 }
 
 //Filter to get the search result array
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+- (void)filterContentForSearchText:(NSString*)searchText
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@ OR author contains[c] %@", searchText, searchText];
     searchResults = [_booksArr filteredArrayUsingPredicate:resultPredicate];
@@ -208,12 +228,6 @@
     [ws downloadBooks];
 }
 
-#pragma mark - UISearchDisplayController Delegate Methods
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    [self filterContentForSearchText:searchString scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    return YES;
-}
 
 #pragma mark - Button Events Pressed
 - (IBAction)deleteAllButtonPressed:(id)sender {
@@ -231,4 +245,5 @@
         [ws deleteAllBooks];
     }
 }
+
 @end

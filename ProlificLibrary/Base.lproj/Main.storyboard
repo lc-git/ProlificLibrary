@@ -20,11 +20,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4J0-bO-yms">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="WvN-qU-cKw">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BookCell" textLabel="akN-5o-lIJ" detailTextLabel="wxB-di-DMy" style="IBUITableViewCellStyleSubtitle" id="qhd-aZ-iWL">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -72,21 +67,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchDisplayController" destination="C4L-me-1fL" id="sTM-rc-Iln"/>
                         <outlet property="tableView" destination="4J0-bO-yms" id="jec-RH-fHY"/>
                         <segue destination="hn4-mq-gyU" kind="show" identifier="DetailSegue" id="prx-wk-Qls"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jT0-dF-kJ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="C4L-me-1fL">
-                    <connections>
-                        <outlet property="delegate" destination="YIj-YY-Er6" id="HHu-FA-FRi"/>
-                        <outlet property="searchBar" destination="WvN-qU-cKw" id="Xab-r8-DqW"/>
-                        <outlet property="searchContentsController" destination="YIj-YY-Er6" id="zcx-XP-cQ1"/>
-                        <outlet property="searchResultsDataSource" destination="YIj-YY-Er6" id="grR-Nw-385"/>
-                        <outlet property="searchResultsDelegate" destination="YIj-YY-Er6" id="KXf-Kz-n4w"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-1292" y="84"/>
         </scene>

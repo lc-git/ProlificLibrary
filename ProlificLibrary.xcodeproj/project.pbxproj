@@ -26,6 +26,7 @@
 		E52E27D51A1CF8A6005335DB /* screenshot4.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27CF1A1CF8A6005335DB /* screenshot4.png */; };
 		E52E27D61A1CF8A6005335DB /* screenshot5.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27D01A1CF8A6005335DB /* screenshot5.png */; };
 		E52E27D71A1CF8A6005335DB /* screenshot6.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27D11A1CF8A6005335DB /* screenshot6.png */; };
+		E52E27DA1A1D4170005335DB /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52E27D91A1D4170005335DB /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		E52E27CF1A1CF8A6005335DB /* screenshot4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot4.png; sourceTree = "<group>"; };
 		E52E27D01A1CF8A6005335DB /* screenshot5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot5.png; sourceTree = "<group>"; };
 		E52E27D11A1CF8A6005335DB /* screenshot6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot6.png; sourceTree = "<group>"; };
+		E52E27D81A1D4170005335DB /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		E52E27D91A1D4170005335DB /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 				E5175C551A1ACE9900B72C9C /* DetailViewController.m */,
 				E5175C571A1ACF4E00B72C9C /* AddViewController.h */,
 				E5175C581A1ACF4E00B72C9C /* AddViewController.m */,
+				E52E27D81A1D4170005335DB /* TableViewController.h */,
+				E52E27D91A1D4170005335DB /* TableViewController.m */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				E5175C561A1ACE9900B72C9C /* DetailViewController.m in Sources */,
 				E5175C2E1A1AC66C00B72C9C /* AppDelegate.m in Sources */,
 				E5175C621A1AF75600B72C9C /* Utils.m in Sources */,
+				E52E27DA1A1D4170005335DB /* TableViewController.m in Sources */,
 				E5175C591A1ACF4E00B72C9C /* AddViewController.m in Sources */,
 				E5175C311A1AC66C00B72C9C /* ProlificLibrary.xcdatamodeld in Sources */,
 				E5175C341A1AC66C00B72C9C /* ViewController.m in Sources */,

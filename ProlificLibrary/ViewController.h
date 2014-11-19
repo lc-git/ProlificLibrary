@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "DetailViewController.h"
 #import "AddViewController.h"
+#import "TableViewController.h"
 #import "WebServiceCalls.h"
 #import "Utils.h"
 #import "Constant.h"
 
-@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UISearchBarDelegate,UISearchDisplayDelegate,UISearchControllerDelegate,WebServiceCallDelegate>
+@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UISearchResultsUpdating,WebServiceCallDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
