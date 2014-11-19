@@ -46,4 +46,4 @@ Features
 
 *Use "Delete" button to delete this book and jump back to home screen. (the same as swiping left at tableview)
 
-*Use action button at the top-right corner to share at Facebook or Twitter or AirDrop
+*Use action button at the top-right corner to share at Facebook or Twitter or AirDrop (In device not in simulator)
