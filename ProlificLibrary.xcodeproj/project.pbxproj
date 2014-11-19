@@ -20,6 +20,12 @@
 		E5175C5D1A1AF1BA00B72C9C /* WebServiceCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C5C1A1AF1BA00B72C9C /* WebServiceCalls.m */; };
 		E5175C621A1AF75600B72C9C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5175C611A1AF75600B72C9C /* Utils.m */; };
 		E52E27CA1A1C6FB5005335DB /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27C91A1C6FB5005335DB /* books.png */; };
+		E52E27D21A1CF8A6005335DB /* screenshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27CC1A1CF8A6005335DB /* screenshot1.png */; };
+		E52E27D31A1CF8A6005335DB /* screenshot2.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27CD1A1CF8A6005335DB /* screenshot2.png */; };
+		E52E27D41A1CF8A6005335DB /* screenshot3.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27CE1A1CF8A6005335DB /* screenshot3.png */; };
+		E52E27D51A1CF8A6005335DB /* screenshot4.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27CF1A1CF8A6005335DB /* screenshot4.png */; };
+		E52E27D61A1CF8A6005335DB /* screenshot5.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27D01A1CF8A6005335DB /* screenshot5.png */; };
+		E52E27D71A1CF8A6005335DB /* screenshot6.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E27D11A1CF8A6005335DB /* screenshot6.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +64,12 @@
 		E5175C611A1AF75600B72C9C /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		E524ECA51A1C0B6700D626E5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		E52E27C91A1C6FB5005335DB /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
+		E52E27CC1A1CF8A6005335DB /* screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1.png; sourceTree = "<group>"; };
+		E52E27CD1A1CF8A6005335DB /* screenshot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot2.png; sourceTree = "<group>"; };
+		E52E27CE1A1CF8A6005335DB /* screenshot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot3.png; sourceTree = "<group>"; };
+		E52E27CF1A1CF8A6005335DB /* screenshot4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot4.png; sourceTree = "<group>"; };
+		E52E27D01A1CF8A6005335DB /* screenshot5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot5.png; sourceTree = "<group>"; };
+		E52E27D11A1CF8A6005335DB /* screenshot6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot6.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +197,12 @@
 		E52E27CB1A1CF54C005335DB /* Screenshot */ = {
 			isa = PBXGroup;
 			children = (
+				E52E27CC1A1CF8A6005335DB /* screenshot1.png */,
+				E52E27CD1A1CF8A6005335DB /* screenshot2.png */,
+				E52E27CE1A1CF8A6005335DB /* screenshot3.png */,
+				E52E27CF1A1CF8A6005335DB /* screenshot4.png */,
+				E52E27D01A1CF8A6005335DB /* screenshot5.png */,
+				E52E27D11A1CF8A6005335DB /* screenshot6.png */,
 			);
 			name = Screenshot;
 			sourceTree = "<group>";
@@ -269,10 +287,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E52E27D41A1CF8A6005335DB /* screenshot3.png in Resources */,
+				E52E27D31A1CF8A6005335DB /* screenshot2.png in Resources */,
 				E52E27CA1A1C6FB5005335DB /* books.png in Resources */,
+				E52E27D61A1CF8A6005335DB /* screenshot5.png in Resources */,
+				E52E27D71A1CF8A6005335DB /* screenshot6.png in Resources */,
 				E5175C371A1AC66C00B72C9C /* Main.storyboard in Resources */,
+				E52E27D51A1CF8A6005335DB /* screenshot4.png in Resources */,
 				E5175C3C1A1AC66C00B72C9C /* LaunchScreen.xib in Resources */,
 				E5175C391A1AC66C00B72C9C /* Images.xcassets in Resources */,
+				E52E27D21A1CF8A6005335DB /* screenshot1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
