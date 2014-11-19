@@ -23,18 +23,23 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
+    WebServiceCalls *ws = [[WebServiceCalls alloc]init];
+    ws.delegate = self;
+    [ws downloadBooks];
+    
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
     //Add GET Request activity indicator
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    //Add observer to update the book list
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBookList) name:UPDATE_BOOK_LIST object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    WebServiceCalls *ws = [[WebServiceCalls alloc]init];
-    ws.delegate = self;
-    [ws downloadBooks];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -191,6 +196,16 @@
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@ OR author contains[c] %@", searchText, searchText];
     searchResults = [_booksArr filteredArrayUsingPredicate:resultPredicate];
+}
+
+
+//Update the book list after get notification
+-(void)updateBookList{
+    NSLog(@"Update book list");
+    
+    WebServiceCalls *ws = [[WebServiceCalls alloc]init];
+    ws.delegate = self;
+    [ws downloadBooks];
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods

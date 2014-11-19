@@ -74,6 +74,9 @@
         alertview.tag = 2;
         [alertview show];
         [self.view addSubview:alertview];
+        
+        //Post a notification to update book list after adding a new book
+        [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_BOOK_LIST object:nil];
     }else{
         [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
     }

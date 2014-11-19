@@ -101,6 +101,9 @@
 -(void)jsonParsedToArrayDone:(int)httpStatusCode data:(NSArray *)data{
     if (httpStatusCode == 200) {
         NSLog(@"Check out a book");
+        
+        //Post a notification to update book list at home screen
+        [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_BOOK_LIST object:nil];
     }else if(httpStatusCode == 204){
         NSLog(@"Delete one book");
         [self goBack:nil];

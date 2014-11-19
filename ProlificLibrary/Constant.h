@@ -22,6 +22,6 @@
 #define PUBLISHER @"publisher"
 #define BOOKURL @"url"
 
-
+#define UPDATE_BOOK_LIST @"update book list notification"
 
 #endif
