@@ -1,0 +1,37 @@
+ProlificLibrary
+===============
+
+This app implement a mobile book library, which is composed of three screens.
+One is home screen, which lists all the books. The second is detail screen, which list the detailed info of a book.
+The third is adding book screen, which can be used to add a book.
+
+
+Features
+===============
+1.Books ViewController
+-----------
+*List all the books
+
+*Swipe left to delete one book
+
+*Press the row of the tableview to jump to the detail viewcontroller
+
+*Press trash button to delete all books
+
+*Press "+" button to jump to the add viewcontroller
+
+*Use title or author to search the books
+
+2.Add ViewController
+-----------
+*Input title, author, publisher and categories to add a new book. Title and author can't be empty.
+
+*Press Done to leave add viewcontroller without saving change
+
+3.Detail ViewController
+-----------
+*Press "Check Out" to checkout the book and update the last checkout history item
+
+*Use "Delete" button to delete this book and jump back to home screen. (the same as swiping left at tableview)
+
+*Use action button at the top-right corner to share at Facebook or Twitter or AirDrop
