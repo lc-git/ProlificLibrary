@@ -106,6 +106,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_BOOK_LIST object:nil];
     }else if(httpStatusCode == 204){
         NSLog(@"Delete one book");
+        [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_BOOK_LIST object:nil];
         [self goBack:nil];
     }else{
         [Utils showAlertView:@"Http Status Error" message:@"Get wrong status code"];
